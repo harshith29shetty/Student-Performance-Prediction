@@ -1,0 +1,69 @@
+{% extends "base.html" %}
+{% block title %}Teacher Dashboard{% endblock %}
+{% block content %}
+<div class="page-header">
+  <h2>Student Performance Dashboard</h2>
+  <p class="text-muted">Synthetic demo dataset used for prediction and review.</p>
+</div>
+
+<div class="stats-grid mb-4">
+  <div class="stat-card">
+    <span>Total Students</span>
+    <strong>{{ total_students }}</strong>
+  </div>
+  <div class="stat-card good">
+    <span>Good</span>
+    <strong>{{ distribution['GOOD'] }}</strong>
+  </div>
+  <div class="stat-card average">
+    <span>Average</span>
+    <strong>{{ distribution['AVERAGE'] }}</strong>
+  </div>
+  <div class="stat-card risk">
+    <span>At Risk</span>
+    <strong>{{ distribution['AT RISK'] }}</strong>
+  </div>
+</div>
+
+<div class="row g-4">
+  <div class="col-lg-7">
+    <div class="card-box">
+      <h5>Performance Category Distribution</h5>
+      {% set total = total_students if total_students else 1 %}
+      {% for label in ['GOOD', 'AVERAGE', 'AT RISK'] %}
+        {% set value = distribution[label] %}
+        {% set width = (value / total) * 100 %}
+        <div class="distribution-row">
+          <div class="label-col">{{ label }}</div>
+          <div class="bar-col">
+            <div class="progress-bar">
+              {% if label == 'GOOD' %}
+                <div class="progress-fill good" style="width: {{ width }}%"></div>
+              {% elif label == 'AVERAGE' %}
+                <div class="progress-fill average" style="width: {{ width }}%"></div>
+              {% else %}
+                <div class="progress-fill at-risk" style="width: {{ width }}%"></div>
+              {% endif %}
+            </div>
+          </div>
+          <div class="count-col">{{ value }}</div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+
+  <div class="col-lg-5">
+    <div class="card-box">
+      <h5>Model Evaluation</h5>
+      <ul class="metric-list">
+        <li><span>Best Model</span><strong>{{ metrics.best_model }}</strong></li>
+        <li><span>Accuracy</span><strong>{{ metrics.accuracy }}</strong></li>
+        <li><span>Precision</span><strong>{{ metrics.precision }}</strong></li>
+        <li><span>Recall</span><strong>{{ metrics.recall }}</strong></li>
+        <li><span>F1-score</span><strong>{{ metrics.f1_score }}</strong></li>
+      </ul>
+      <div class="small-note mt-3">This is a teaching/demo model using synthetic academic data.</div>
+    </div>
+  </div>
+</div>
+{% endblock %}

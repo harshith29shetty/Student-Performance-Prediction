@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}Student Performance Prediction{% endblock %}</title>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <nav class="navbar navbar-expand-lg navbar-dark app-navbar">
+    <div class="container">
+      <a class="navbar-brand fw-bold" href="/">🎓 Student Performance Prediction</a>
+      <div class="navbar-nav ms-auto">
+        <a class="nav-link" href="/">Dashboard</a>
+        <a class="nav-link" href="/students/new">Add Student</a>
+        <a class="nav-link" href="/students">Student List</a>
+      </div>
+    </div>
+  </nav>
+
+  <main class="container py-5">
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="text-center text-muted py-4 small">
+    Student Performance Prediction System — MCA Mini Project
+  </footer>
+</body>
+</html>

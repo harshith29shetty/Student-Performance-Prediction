@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% block title %}Add Student{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-8">
+    <div class="card-box">
+      <h3>Add Student</h3>
+      {% if error %}
+        <div class="alert alert-danger">{{ error }}</div>
+      {% endif %}
+      <form method="POST" action="/students/new">
+        <div class="row g-3">
+          <div class="col-md-6">
+            <label class="form-label">Student ID</label>
+            <input type="text" class="form-control" name="student_id" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Student Name</label>
+            <input type="text" class="form-control" name="student_name" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Semester</label>
+            <input type="number" class="form-control" name="semester" min="1" max="8" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Previous CGPA</label>
+            <input type="number" step="0.1" min="0" max="10" class="form-control" name="previous_cgpa" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Attendance %</label>
+            <input type="number" step="0.1" min="0" max="100" class="form-control" name="attendance" required>
+          </div>
+
+          <div class="col-md-4">
+            <label class="form-label">Internal Marks %</label>
+            <input type="number" step="0.1" min="0" max="100" class="form-control" name="internal_marks" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Assignment Completion %</label>
+            <input type="number" step="0.1" min="0" max="100" class="form-control" name="assignment_completion" required>
+          </div>
+          <div class="col-md-4">
+            <label class="form-label">Lab Marks %</label>
+            <input type="number" step="0.1" min="0" max="100" class="form-control" name="lab_marks" required>
+          </div>
+
+          <div class="col-md-6">
+            <label class="form-label">Number of Backlogs</label>
+            <input type="number" min="0" max="10" class="form-control" name="backlogs" required>
+          </div>
+          <div class="col-md-6">
+            <label class="form-label">Average Study Hours / Day</label>
+            <input type="number" step="0.1" min="0" max="12" class="form-control" name="study_hours" required>
+          </div>
+        </div>
+
+        <div class="mt-4 text-end">
+          <button type="submit" class="btn btn-primary btn-lg">Save Student</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+{% endblock %}

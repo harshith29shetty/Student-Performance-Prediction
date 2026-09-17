@@ -1,0 +1,33 @@
+{
+  "dataset_note": "Synthetic/demo dataset generated for the mini project.",
+  "best_model": "Decision Tree",
+  "accuracy": 0.576,
+  "precision": 0.5954,
+  "recall": 0.576,
+  "f1_score": 0.5816,
+  "model_results": {
+    "Logistic Regression": {
+      "accuracy": 0.552,
+      "precision": 0.5881,
+      "recall": 0.552,
+      "f1_score": 0.5566
+    },
+    "Decision Tree": {
+      "accuracy": 0.576,
+      "precision": 0.5954,
+      "recall": 0.576,
+      "f1_score": 0.5816
+    },
+    "Random Forest": {
+      "accuracy": 0.592,
+      "precision": 0.5854,
+      "recall": 0.592,
+      "f1_score": 0.5716
+    }
+  },
+  "class_order": [
+    "GOOD",
+    "AVERAGE",
+    "AT RISK"
+  ]
+}

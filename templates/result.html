@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% block title %}Prediction Result{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-lg-9">
+    <div class="card-box result-box">
+      <h3>Student Performance Result</h3>
+      <div class="result-header-line"></div>
+
+      <div class="result-grid mb-3">
+        <div><span>Name:</span><strong>{{ student.student_name }}</strong></div>
+        <div><span>Semester:</span><strong>{{ student.semester }}</strong></div>
+      </div>
+
+      <div class="data-grid">
+        <div><span>Previous CGPA:</span><strong>{{ student.previous_cgpa }}</strong></div>
+        <div><span>Attendance:</span><strong>{{ student.attendance }}%</strong></div>
+        <div><span>Internal Marks:</span><strong>{{ student.internal_marks }}%</strong></div>
+        <div><span>Assignment Completion:</span><strong>{{ student.assignment_completion }}%</strong></div>
+        <div><span>Lab Marks:</span><strong>{{ student.lab_marks }}%</strong></div>
+        <div><span>Backlogs:</span><strong>{{ student.backlogs }}</strong></div>
+        <div><span>Study Hours:</span><strong>{{ student.study_hours }}</strong></div>
+      </div>
+
+      <div class="prediction-panel mt-4">
+        <div class="prediction-label">Predicted Performance:</div>
+        <div class="prediction-value {{ prediction.performance|lower|replace(' ', '-') }}">{{ prediction.performance }}</div>
+      </div>
+
+      <div class="prediction-panel mt-3">
+        <div class="prediction-label">Risk Level:</div>
+        <div class="risk-value">{{ prediction.risk_level }}</div>
+      </div>
+
+      <div class="prediction-panel mt-3">
+        <div class="prediction-label">Areas to Improve:</div>
+        <div class="areas-box">
+          {% if prediction.areas %}
+            <ul>
+              {% for area in prediction.areas %}
+                <li>{{ area }}</li>
+              {% endfor %}
+            </ul>
+          {% else %}
+            <span>None / Minor improvement recommended</span>
+          {% endif %}
+        </div>
+      </div>
+
+      <div class="mt-4 d-flex justify-content-between align-items-center">
+        <a href="/students/{{ student.student_id }}" class="btn btn-outline-secondary">Back to Student</a>
+        <a href="/students" class="btn btn-primary">Student List</a>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
