@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # Student Performance Prediction System
 
 This project follows the MCA mini project plan for a teacher-focused student performance prediction system.
@@ -39,3 +40,7 @@ Open http://127.0.0.1:5000 in the browser.
 
 - The dataset is synthetic/demo data as required for an academic mini project.
 - The app is intentionally simple and limited to the plan scope.
+=======
+# Student-Performance-Prediction
+This project follows the MCA mini project plan for a teacher-focused student performance prediction system.
+>>>>>>> eb1dc2e8b14e7ec2eba9fb459412e4878de32568
